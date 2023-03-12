@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Install ufw if it's not installed already
+if ! command -v ufw &> /dev/null
+then
+    echo "ufw is not installed, installing now..."
+    apt-get update
+    apt-get install ufw -y
+fi
+
 # Set domain name
 DOMAIN_NAME="example.com"
 
