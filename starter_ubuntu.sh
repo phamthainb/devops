@@ -12,9 +12,6 @@ sudo apt-get install nodejs npm -y
 # Install pm2
 sudo npm install -g pm2
 
-# Install MongoDB
-sudo apt-get install mongodb -y
-
 # Install Redis
 sudo apt-get install redis-server -y
 
