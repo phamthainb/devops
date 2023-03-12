@@ -25,5 +25,8 @@ sudo systemctl start nginx
 sudo systemctl enable redis-server
 sudo systemctl start redis-server
 
+# Install netstat
+apt install net-tools
+
 # Output a message to indicate successful installation
 echo "Installation of services complete!"
