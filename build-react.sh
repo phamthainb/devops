@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Load variables from config file
+source config.sh
+
 should_npm_install=false
 # Check if package.json has changed
 if git diff origin/$(git rev-parse --abbrev-ref HEAD) HEAD --name-only | grep -q 'package.json'; then
@@ -29,12 +32,8 @@ cp -r dist/* /var/www/player/html
 echo "Done!"
 
 
-
 # Send a message to the Telegram bot
-telegram_bot_token="<your_bot_token>"
-telegram_chat_id="<your_chat_id>"
-telegram_message="Deployment completed!"
-
-curl -s -X POST "https://api.telegram.org/bot$telegram_bot_token/sendMessage" \
-     -d chat_id="$telegram_chat_id" \
+telegram_message="Deployment completed! Version: $APP_VERSION"
+curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+     -d chat_id="$TELEGRAM_CHAT_ID" \
      -d text="$telegram_message" > /dev/null
