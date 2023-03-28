@@ -28,5 +28,9 @@ sudo systemctl start redis-server
 # Install netstat
 apt install net-tools
 
+# check and install node lts
+npm i -g n
+n lts
+
 # Output a message to indicate successful installation
 echo "Installation of services complete!"
