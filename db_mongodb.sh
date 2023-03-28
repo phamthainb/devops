@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# check update
+apt update
+apt install dirmngr gnupg apt-transport-https ca-certificates software-properties-common
+
 # Import the MongoDB public key
 wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
 
