@@ -26,4 +26,6 @@ server {
         }
 }
 
-3.
+3. npm config set legacy-peer-deps true
+4.
+5.
