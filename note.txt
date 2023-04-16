@@ -27,5 +27,5 @@ server {
 }
 
 3. npm config set legacy-peer-deps true
-4.
+4. nextjs -> npx next
 5.
