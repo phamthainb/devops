@@ -11,7 +11,10 @@ PORT_SERVICES=(
     3000:"web"
 )
 
-THRESHOLD_PERCENT=95
+# disk
+THRESHOLD_PERCENT_DISK=95
+# cpu
+THRESHOLD_PERCENT_CPU=95
 
 # Get the current hostname
 HOSTNAME=$(hostname)
@@ -25,13 +28,13 @@ send_telegram_message() {
 
 # Monitor Disk Usage
 disk_usage=$(df -h --output=pcent / | awk 'NR==2 {print $1}' | tr -d '%')
-if [ "$disk_usage" -ge "$THRESHOLD_PERCENT" ]; then
+if [ "$disk_usage" -ge "$THRESHOLD_PERCENT_DISK" ]; then
     send_telegram_message "[$HOSTNAME] Disk usage is high: $disk_usage%."
 fi
 
 # Monitor CPU Load
 cpu_load=$(top -bn1 | awk '/^%Cpu/ {print $2}' | cut -d. -f1)
-if [ "$cpu_load" -ge 80 ]; then
+if [ "$cpu_load" -ge "$THRESHOLD_PERCENT_CPU" ]; then
     send_telegram_message "[$HOSTNAME] High CPU load: $cpu_load%."
 fi
 
