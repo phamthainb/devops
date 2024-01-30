@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-deployment
+  namespace: me-platform
+  labels:
+    app: ubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu
+        command: ["/bin/bash", "-c", "tail -f /dev/null"]
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "apt-get update && apt-get install -y curl redis-tools"]
+      nodeSelector:
+        kubernetes.io/os: linux
