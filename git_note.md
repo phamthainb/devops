@@ -1,2 +1,2 @@
 - git reset all commit: git checkout --orphan newBranch && git add -A && git commit -am "Initial commit" && git branch -D master && git branch -m master && git push -f origin master
-- 
+- git config --global credential.helper store
