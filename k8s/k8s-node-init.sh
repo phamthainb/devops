@@ -19,6 +19,7 @@ net.bridge.bridge-nf-call-iptables  = 1
 net.ipv4.ip_forward                 = 1
 EOF
 
+# check tất cả `cat /etc/sysctl.d/*.conf | grep ip_forward` xem có thằng nào trùng nhau ko
 sysctl --system
 
 
