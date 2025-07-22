@@ -6,4 +6,4 @@ echo 'export HISTCONTROL=ignoredups:ignorespace' >> ~/.bashrc
 echo 'export PROMPT_COMMAND="history -a; history -n"' >> ~/.bashrc
 echo 'shopt -s histappend' >> ~/.bashrc
 echo '# =============================================' >> ~/.bashrc
-echo 'echo "[ℹ️] Unlimited history + timestamp enabled. Run: source ~/.bashrc"'
+source ~/.bashrc
