@@ -26,7 +26,8 @@ sysctl --system
 # Cài container runtime (containerd)
 apt update && apt install -y containerd
 
-containerd config default | tee /etc/containerd/config.toml
+mkdir -p /etc/containerd
+containerd config default > /etc/containerd/config.toml
 sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/config.toml
 
 systemctl restart containerd && systemctl enable containerd
